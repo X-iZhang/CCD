@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+      content="Libra is a temporal-aware AI model designed for radiology report generation, leveraging multimodal large language models (MLLMs) and chest X-ray images.">
+  <meta name="keywords" content="Libra, AI radiology, temporal medical imaging, chest X-rays, multimodal LLMs, radiology report generation, deep learning, medical AI, biomedical NLP, temporal analysis, MIMIC-CXR, RadDINO, Meditron, Xi Zhang">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libra</title>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Libra: Leveraging Temporal Images for Biomedical Radiology Analysis">
+  <meta property="og:description" content="Libra is a temporal-aware AI model designed for radiology report generation, leveraging multimodal LLMs and chest X-ray images.">
+  <meta property="og:image" content="https://github.com/X-iZhang/Libra/blob/main/assets/Libra_logo_c.png">
+  <meta property="og:url" content="https://x-izhang.github.io/Libra_v1.0/">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card (for better previews on Twitter) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Libra: Leveraging Temporal Images for Biomedical Radiology Analysis">
+  <meta name="twitter:description" content="Libra is a temporal-aware AI model designed for radiology report generation, leveraging multimodal LLMs and chest X-ray images.">
+  <meta name="twitter:image" content="https://github.com/X-iZhang/Libra/blob/main/assets/Libra_logo_c.png">
+
+  <!-- Favicon (for browser tabs and bookmarks) -->
+  <link rel="icon" type="image/x-icon" href="static/images/Libra_logo.png">
+  
+  <meta name="google-site-verification" content="6lbYN1vX7A4sD8SrVniq84UEKyEUSBgxeP7d3FjuuK0" />
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.9.1/gradio.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="static/images/Libra_logo.png"
+            style="height: 50px; width: 50px; margin-right: 10px; vertical-align: middle;">Libra: Leveraging Temporal Images for Biomedical Radiology Analysis</h1>
+
+          <div class="column has-text-centered">
+            <div class="publication-subtitle">
+              <h5 class="subtitle is-4 has-text-danger" style="font-style: italic; font-weight: bold;">ACL 2025</h5>
+            </div>
+          </div>
+          
+          <!-- Paper authors -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                <a href="https://x-izhang.github.io/">Xi Zhang</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://mengzaiqiao.github.io/">Zaiqiao Meng</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jakelever.github.io/">Jake Lever</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.edho.net/">Edmond S. L. Ho</a>,
+            </span>
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup><a href="https://www.gla.ac.uk/schools/computing/research/researchsections/ida-section/informationretrieval/">1</a></sup>Information Retrieval Group</span><br>
+            <span class="author-block"><sup><a href="https://ai4biomed.org/">2</a></sup>AI4BioMed Lab</span><br>
+            <span class="author-block"><b style="color:#A9A9A9; font-weight:normal">&#x25B6 </b>School of Computing Science, University of Glasgow, UK</span>
+          </div>
+
+          <br>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- ReXrank leaderboard badge -->
+              <span class="link-block">
+                <a href="https://rexrank.ai/" target="_blank"
+                  class="external-link button is-normal is-rounded is-info">
+                  <span class="icon">
+                    🏆
+                  </span>
+                  <span>Top Model on Leaderboard</span>
+                </a>
+              </span>
+              <!-- Arxiv PDF link -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2411.19378" target="_blank"
+                   class="external-link button is-normal is-rounded is-danger">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/X-iZhang/Libra" target="_blank" 
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+              <span class="link-block">
+                      <a href="https://huggingface.co/collections/X-iZhang/libra-6772bfccc6079298a0fa5f8d" target="_blank"
+                         class="external-link button is-normal is-rounded is-light">
+                      <span class="icon">
+                        🤗
+                      </span>
+                      <span>Space</span>
+                    </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/X-iZhang/Libra" target="_blank"
+                   class="external-link button is-normal is-rounded is-link">
+                <span class="icon">
+                  <i class="far fa-images"></i>
+                </span>
+                <span>Demo</span>
+              </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/X-iZhang/Libra#data-download" target="_blank"
+                  class="external-link button is-normal is-rounded is-warning">
+                  <span class="icon">
+                    <i class="fas fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/X-iZhang/Libra?tab=readme-ov-file#model-weights" target="_blank"
+                  class="external-link button is-normal is-rounded is-primary">
+                  <span class="icon">
+                    <i class="fas fa-share-square"></i>
+                  </span>
+                  <span>Model</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <h4 class="subtitle has-text-centered"></h4>
+      🔥<strong><span style="color: #ff3860">[NEWS!]</span></strong> 
+
+      <div class="news-item">
+        <strong>[20 Jul 2025]</strong> ✅ Support for 
+        <a href="https://huggingface.co/microsoft/llava-rad"><strong>LLaVA-Rad</strong></a> is added. 
+        <a href="https://github.com/X-iZhang/Libra/tree/main?tab=readme-ov-file#compatible-weights">
+          <strong>Compatible weights</strong>
+        </a> are now available.
+      </div>
+
+      <div class="news-item">
+        <strong>[15 Jul 2025]</strong> ✅ Support for 
+        <a href="https://huggingface.co/microsoft/maira-2"><strong>MAIRA-2</strong></a> is added. 
+        <a href="https://github.com/X-iZhang/Libra/tree/main?tab=readme-ov-file#compatible-weights">
+          <strong>Compatible weights</strong>
+        </a> are provided for benchmarking, with 
+        <code>use_maira_feature_norm: true</code> set to ensure compatibility with the default feature extraction strategy.
+      </div>
+      
+      <div class="news-item">
+        <strong>[14 Jul 2025]</strong> 🩺 For evaluating AI-generated radiology reports, we recommend using 👉 
+        <a href="https://pypi.org/project/RadEval/"><strong>RadEval</strong></a>.
+      </div>
+
+      <div class="news-item">
+        <strong>[09 Jul 2025]</strong> 🚚 The test dataset is now available on Hugging Face — check out 
+        <a href="https://huggingface.co/datasets/X-iZhang/MIMIC-CXR-RRG"><strong>./MIMIC-CXR-RRG</strong></a>. 
+        It includes <code>findings, impression, indication, comparison, 
+        technique, history, and examination</code> sections, processed following the official MIMIC-CXR guidelines.
+      </div>
+
+      <div class="news-item">
+        <strong>[08 Jul 2025]</strong> 💻 Data preparation scripts for 
+        <a href="https://github.com/X-iZhang/Libra?tab=readme-ov-file#prepare-data"><strong>Prior Image Retrieve</strong></a> 
+        are now available.
+      </div>
+
+      <div class="news-item">
+        <strong>[18 Jun 2025]</strong> 🎤 Invited talk at 
+        <a href="https://healtac2025.github.io/programme/"><strong>HealTAC 2025</strong></a> — <a href="https://x-izhang.github.io/post/healtac2025/"><em>"Towards Temporal-Aware Multimodal Large Language Models for Improved Radiology Report Generation"</em></a>
+      </div>
+
+      <div class="news-item">
+        <strong>[16 May 2025]</strong> 📝 A short blog: some musings on <a href="https://x-izhang.github.io/blog/libra-blog1/"><em>"What Does ‘Temporal’ Really Mean?”</em></a> — thoughts behind Libra and temporal reasoning in radiology!
+      </div>
+
+      <div class="news-item">
+        <strong>[15 May 2025]</strong> 🥳 <a href="https://arxiv.org/pdf/2411.19378v2">The paper</a> has been accepted to <a href="https://2025.aclweb.org/"><strong><span style="color: #ff3860">ACL 2025</span></strong></a>!
+      </div>
+
+      <div class="news-item">
+        <strong>[09 May 2025]</strong> ✨ Now with full support for the <a href="https://huggingface.co/collections/microsoft/phi-4-677e9380e514feb5577a40e4">Phi-4</a> family — compact language and reasoning models from Microsoft.
+      </div>
+
+      <div class="news-item">
+        <strong>[24 Mar 2025]</strong> 🏆 <strong>Libra</strong> was invited to the 
+        <a href="https://rexrank.ai/">ReXrank</a> Challenge — a leading leaderboard for Chest X-ray Report Generation.
+      </div>
+
+      <details>
+        <summary><strong>- More Updates -</strong></summary>
+
+        <div class="news-item">
+          <strong>[10 Mar 2025]</strong> ✅ The architecture of 
+          <a href="https://huggingface.co/microsoft/llava-med-v1.5-mistral-7b">LLaVA-Med v1.5</a> is now supported by this repo. 
+          <a href="https://github.com/X-iZhang/Libra?tab=readme-ov-file#libra-v05"><strong>Compatible weights</strong></a> are provided, with 
+          <code>unfreeze_mm_vision_tower: true</code> set to ensure the <em>adapted</em> vision encoder is used.
+        </div>
+
+        <div class="news-item">
+          <strong>[11 Feb 2025]</strong> 🚨 <a href="https://huggingface.co/X-iZhang/libra-Llama-3.2-3B-Instruct"><strong>Libra-v1.0-3b</strong></a> 
+          has been released! A <strong>Small Multimodal Language Model for Radiology Report Generation</strong>, following the same training strategy as <strong>Libra</strong>.
+        </div>
+
+        <div class="news-item">
+          <strong>[10 Feb 2025]</strong> 🚀 The 
+          <a href="https://github.com/X-iZhang/Libra"><strong>Libra</strong></a> repo now supports 
+          <a href="https://huggingface.co/mistralai">Mistral</a>, 
+          <a href="https://huggingface.co/collections/microsoft/phi-3-6626e15e9585a200d2d761e3">Phi-3</a>, and 
+          <a href="https://huggingface.co/collections/google/gemma-2-release-667d6600fd5220e7b967f315">Gemma</a> as LLMs, along with 
+          <a href="https://huggingface.co/collections/google/siglip-659d5e62f0ae1a57ae0e83ba">SigLip</a> as the encoder!
+        </div>
+
+        <div class="news-item">
+          <strong>[19 Jan 2025]</strong> ⚡ The <strong>online demo</strong> is available at 
+          <a href="https://huggingface.co/spaces/X-iZhang/Libra">Hugging Face Demo</a>. Welcome to try it out!
+        </div>
+
+        <div class="news-item">
+          <strong>[07 Jan 2025]</strong> 🗂️ The processed data is available at 
+          <a href="https://github.com/X-iZhang/Libra#data-download">Data Download</a>.
+        </div>
+
+        <div class="news-item">
+          <strong>[20 Dec 2024]</strong> 🚨 
+          <a href="https://huggingface.co/X-iZhang/libra-v1.0-7b"><strong>Libra-v1.0-7b</strong></a> has been released!
+        </div>
+      </details>
+      
+      <!-- <div class="video-grid">
+        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px;">
+          <iframe
+            src="https://www.youtube.com/embed/_R8XUaaAU3g"
+            title="Demo Video"
+            frameborder="0"
+            allow="autoplay; encrypted-media; fullscreen"
+            allowfullscreen
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 16px;">
+          </iframe>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Radiology report generation (RRG) requires advanced medical image analysis, effective temporal reasoning, and accurate text generation. While multimodal large language models (MLLMs) align with pre-trained vision encoders to enhance visual-language understanding, most existing methods rely on single-image analysis or rule-based heuristics to process multiple images, failing to fully leverage temporal information in multi-modal medical datasets. In this paper, we introduce <strong>Libra</strong>, a temporal-aware MLLM tailored for chest X-ray report generation. Libra combines a radiology-specific image encoder with a novel Temporal Alignment Connector (<strong>TAC</strong>), designed to accurately capture and integrate temporal differences between paired current and prior images. Extensive experiments on the MIMIC-CXR dataset demonstrate that Libra establishes a new state-of-the-art benchmark among similarly scaled MLLMs, setting new standards in both clinical relevance and lexical accuracy.
+          </p>
+          <img src="static/images/libra_architecture.png">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- <iframe
+  src="https://huggingface.co/datasets/X-iZhang/MIMIC-CXR-RRG/embed/viewer/findings_section/test"
+  frameborder="0"
+  width="50%"
+  height="560px"
+></iframe> -->
+
+<section class="section" id="OnlineDemo">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Demo</h2>
+    <div class="content has-text-centered">
+      <p>Explore the capabilities of Libra with our interactive demo.</p>
+      <!-- Gradio App -->
+      <gradio-app src="https://x-izhang-libra.hf.space"></gradio-app>
+    </div>
+  </div>
+</section>
+
+<!-- Why Libra -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- 标题居中 -->
+    <div class="has-text-centered" style="margin-bottom: 20px;">
+      <h2 class="title is-3 has-text-centered">Why Libra?</h2>
+    </div>
+    <div class="columns is-centered">
+      <!-- 左侧：插入图像 -->
+      <div class="column is-half has-text-centered">
+        <img src="static/images/figure_1.png" alt="Temporal Awareness in Report Generation" style="max-width: 100%; height: auto;">
+      </div>
+      <!-- 右侧：文本描述 -->
+      <div class="column is-half">
+        <div class="content has-text-justified">
+          <p>
+            <strong>Temporal hallucination</strong> is a critical challenge in radiology report generation (RRG). Traditional multimodal 
+            large language models (MLLMs) struggle to integrate prior images correctly, often generating:
+          </p>
+          <ul>
+            <li><strong>Spurious references</strong> to nonexistent prior studies (Single-image case).</li>
+            <li><strong>Inaccurate interpretations</strong> of disease progression (Temporal-image case).</li>
+          </ul>
+          <p>
+            <strong>Libra</strong> addresses these limitations by integrating a <strong>Temporal Alignment Connector (TAC)</strong> to improve temporal awareness, ensuring:
+          </p>
+          <ul>
+            <li><strong>Prior studies are correctly referenced</strong> only when available.</li>
+            <li><strong>Hallucinated references are eliminated</strong>, avoiding misleading reports.</li>
+            <li><strong>Temporal changes are accurately captured</strong>, ensuring clinically meaningful outputs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Overview</h2>
+      <div class="content has-text-justified">
+        <p>
+          We propose <strong>Libra</strong> (<strong>L</strong>everaging Temporal <strong>I</strong>mages for <strong>B</strong>iomedical <strong>R</strong>adiology <strong>A</strong>nalysis), a novel framework tailored for radiology report generation (RRG) that incorporates temporal change information to address the challenges of interpreting medical images effectively.
+        </p>
+        <p>
+          Libra leverages RAD-DINO, a pre-trained visual transformer, as its image encoder to generate robust and scalable image features. These features are further refined by a <strong>Temporal Alignment Connector (TAC)</strong>, a key innovation in Libra's architecture. The TAC comprises:
+        </p>
+        <ul>
+          <li><strong>Layerwise Feature Extractor (LFE):</strong> Captures high-granularity image feature embeddings from the encoder.</li>
+          <li><strong>Temporal Fusion Module (TFM):</strong> Integrates temporal references from prior studies to enhance temporal awareness and reasoning.</li>
+        </ul>
+        <p>
+          These refined features are fed into Meditron, a specialised medical large language model (LLM), to generate comprehensive, temporally-aware radiology reports. Libra’s modular design seamlessly integrates state-of-the-art open-source pre-trained models for both image and text, aligning them through a temporal-aware adapter to ensure robust cross-modal reasoning and understanding.
+        </p>
+        <p>
+          Through a two-stage training strategy, Libra demonstrates the powerful potential of multimodal large language models (MLLMs) in specialised radiology applications. Extensive experiments on the <strong>MIMIC-CXR dataset</strong> highlight Libra's performance, setting a new state-of-the-art benchmark among models of the same parameter scale.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Key Contributions</h2>
+      <div class="content has-text-justified">
+        <ul>
+          <li><b style="color: #FF6347;">Temporal Awareness:</b> Libra captures and synthesizes temporal changes in medical images, addressing the challenge of handling prior study citations in RRG tasks.</li>
+          <li><b style="color: #4682B4;">Innovative Architecture:</b> The Temporal Alignment Connector (TAC) ensures high-granularity feature extraction and temporal integration, significantly enhancing cross-modal reasoning capabilities.</li>
+          <li><b style="color: #32CD32;">State-of-the-Art Performance:</b> Libra achieves outstanding results on the MIMIC-CXR dataset, outperforming existing MLLMs in both accuracy and temporal reasoning.</li>
+          <li><b style="color: #FFD700;">Libra Repository:</b> Our code space provides a public and detailed implementation of Libra, facilitating reproducibility and further research in the field, and integrates both training and evaluation processes, ensuring a streamlined and efficient workflow for developing and testing radiology report generation models.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experimental Results -->
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Experimental Results</h2>
+      <div class="content has-text-justified">
+        <div class="columns is-centered">
+          <div class="column is-centered">
+            <img src="static/images/results.png" style="display: block; margin: 0 auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Performance Analysis</h2>
+      <div class="content has-text-justified">
+        <div class="columns is-centered">
+          <div class="column is-centered">
+            <img src="static/images/figure_3.png" style="display: block; margin: 0 auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@misc{zhang2025libraleveragingtemporalimages,
+  title={Libra: Leveraging Temporal Images for Biomedical Radiology Analysis}, 
+  author={Xi Zhang and Zaiqiao Meng and Jake Lever and Edmond S. L. Ho},
+  year={2025},
+  eprint={2411.19378},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2411.19378}, 
+}
+</code></pre>
+  </div>
+</section>
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p>
+      This website is adapted from <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
+                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+  </div>
+</section>
+
+</body>
+
+</html>

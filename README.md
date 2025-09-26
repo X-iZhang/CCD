@@ -1,1 +1,1 @@
-# CCD
+This branch is used for the project portal.
