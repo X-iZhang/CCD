@@ -9,4 +9,4 @@
 </h3>
 
 <!--## 🌟 Introduction-->
-<h2><img src="/assets/CCD_icon_logo.png" width="25"> Introduction</h2>
+<!-- <h2><img src="/assets/CCD_icon_logo.png" width="25"> Introduction</h2> -->
