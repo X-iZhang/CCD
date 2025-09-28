@@ -8,5 +8,4 @@
   <strong>🤖 We're still cooking — Stay tuned! 🤖<br>⭐ Give us a star if you like it! ⭐</strong>
 </h3>
 
-<!--## 🌟 Introduction-->
 <!-- <h2><img src="/assets/CCD_icon_logo.png" width="25"> Introduction</h2> -->
