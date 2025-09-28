@@ -104,22 +104,22 @@
               </span>
               
               <span class="link-block">
-                      <a href="https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c" target="_blank"
-                         class="external-link button is-normal is-rounded is-light">
-                      <span class="icon">
-                        🤗
-                      </span>
-                      <span>Space</span>
-                    </a>
+                <a href="https://huggingface.co/spaces/X-iZhang/CCD" target="_blank"
+                   class="external-link button is-normal is-rounded is-link">
+                <span class="icon">
+                  <i class="far fa-images"></i>
+                </span>
+                <span>Demo</span>
+              </a>
               </span>
 
               <span class="link-block">
-                <a href="https://github.com/X-iZhang/CCD" target="_blank"
+                <a href="https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c" target="_blank"
                   class="external-link button is-normal is-rounded is-warning">
                   <span class="icon">
                     <i class="fas fa-database"></i>
                   </span>
-                  <span>Dataset</span>
+                  <span>Datasets</span>
                 </a>
               </span>
               <span class="link-block">
@@ -128,7 +128,7 @@
                   <span class="icon">
                     <i class="fas fa-share-square"></i>
                   </span>
-                  <span>Model</span>
+                  <span>Models</span>
                 </a>
               </span>
             </div>
@@ -139,49 +139,20 @@
   </div>
 </section>
 
-<section class="section hero is-light">
+<section class="section hero">
   <div class="container is-max-widescreen">
     <div class="hero-body">
       <h4 class="subtitle has-text-centered"></h4>
       🔥<strong><span style="color: #ff3860">[NEWS!]</span></strong> 
-
-      <div class="news-item">
-        🤖 We're still cooking — Stay tuned! 🤖
-        <br>
-        ⭐ Give us a star if you like it! ⭐
-      </div>
-
-      <!-- <div class="video-grid">
-        <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px;">
-          <iframe
-            src="https://www.youtube.com/embed/_R8XUaaAU3g"
-            title="Demo Video"
-            frameborder="0"
-            allow="autoplay; encrypted-media; fullscreen"
-            allowfullscreen
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 16px;">
-          </iframe>
+        <div class="news-item">
+          🤖 We're still cooking codebase! 🤖
+          <br>
+          ⭐ Give us a star if you like it! ⭐
         </div>
-      </div> -->
-
+        <div class="news-item">
+          <strong>[27 Sep 2025]</strong> 🎉 Preprint available at <a href="https://arxiv.org/abs/0">arXiv</a>.
+        </div>
     </div>
-  </div>
-</section>
-
-<section class="hero teaser" style="
-  margin: 3em auto; 
-  font-style: italic; 
-  font-size: 1.3em; 
-  font-family: 'Georgia', serif;
-  max-width: 720px; 
-  padding: 0 1em;
-">
-  <p style="margin-bottom: 1.5em;">
-    “It’s better to be roughly right than precisely wrong.”
-  </p>
-  <div style="text-align: right;">
-    — <strong>Carveth Read</strong><br>
-    <em>Logic: Deductive and Inductive</em>
   </div>
 </section>
 
@@ -210,15 +181,33 @@
   height="560px"
 ></iframe> -->
 
-<!-- <section class="section" id="OnlineDemo">
+<!-- <section class="section hero is-light" id="OnlineDemo">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Demo</h2>
     <div class="content has-text-centered">
-      <p>Explore the capabilities of Libra with our interactive demo.</p>
+      <p>Explore the capabilities of CCD with our interactive demo.</p>
       <gradio-app src="https://x-izhang-libra.hf.space"></gradio-app>
     </div>
   </div>
 </section> -->
+
+<section class="hero teaser" style="
+  margin: 3em auto; 
+  font-style: italic; 
+  font-size: 1.3em; 
+  font-family: 'Georgia', serif;
+  max-width: 720px; 
+  padding: 0 1em;
+">
+  <p style="margin-bottom: 1.5em;">
+    “It’s better to be roughly right than precisely wrong.”
+  </p>
+  <div style="text-align: right;">
+    — <strong>Carveth Read</strong><br>
+    <em>Logic: Deductive and Inductive</em>
+  </div>
+</section>
+
 
 <!-- Why CCD -->
 <section class="section hero is-light">
@@ -230,8 +219,16 @@
     <div class="columns is-centered">
       <!-- 左侧：插入图像 -->
       <div class="content has-text-justified">
-        <img src="static/images/hallucination_cases_large_size.png" alt="Temporal Awareness in Report Generation" style="max-width: 100%; height: auto;">
+        <img src="static/images/hallucination_cases_large_size.png" alt="Clinical hallucination cases mitigated by CCD" style="max-width: 100%; height: auto;">
       </div>
+    </div>
+    <div class="content has-text-justified" style="margin-top: 1.5rem;">
+      <p>
+        Radiology MLLMs remain vulnerable to <em>prompt-induced hallucinations</em> when clinical sections contain counterfactual details or ambiguous guidance. The figure above contrasts baseline predictions with CCD-enabled outputs across report generation and question answering tasks. <strong><span style="color: #ff3860">Red</span></strong>  highlights mark unsupported findings that can compromise patient care, while <strong><span style="color: #018afb;">blue</span></strong> text reflects misleading prompt context the model must resist.
+      </p>
+      <p>
+        <strong>Clinical Contrastive Decoding</strong> mitigates these risks at inference time. Rather than retraining models or relying on retrieval corpora, CCD injects trustworthy, image-grounded signals distilled from specialist expert models. The result is a decoding policy that maintains fluency yet stays faithful to the radiograph.
+      </p>
     </div>
   </div>
 </section>
@@ -242,20 +239,24 @@
       <h2 class="title is-3">Overview</h2>
       <div class="content has-text-justified">
         <p>
-          We propose <strong>Libra</strong> (<strong>L</strong>everaging Temporal <strong>I</strong>mages for <strong>B</strong>iomedical <strong>R</strong>adiology <strong>A</strong>nalysis), a novel framework tailored for radiology report generation (RRG) that incorporates temporal change information to address the challenges of interpreting medical images effectively.
+          <strong>Clinical Contrastive Decoding (CCD)</strong> is a plug-and-play inference framework designed to reduce medical hallucinations in radiology MLLMs. It introduces structured clinical supervision from expert models (e.g., DenseNet or MedSigLIP) at decoding time, without modifying model weights or requiring external retrieval.
         </p>
         <p>
-          Libra leverages RAD-DINO, a pre-trained visual transformer, as its image encoder to generate robust and scalable image features. These features are further refined by a <strong>Temporal Alignment Connector (TAC)</strong>, a key innovation in Libra's architecture. The TAC comprises:
+          Given a chest radiograph, the expert model predicts symptom-level probabilities across 14 CheXpert categories. CCD integrates this signal through a dual-stage logit refinement strategy:
         </p>
         <ul>
-          <li><strong>Layerwise Feature Extractor (LFE):</strong> Captures high-granularity image feature embeddings from the encoder.</li>
-          <li><strong>Temporal Fusion Module (TFM):</strong> Integrates temporal references from prior studies to enhance temporal awareness and reasoning.</li>
+          <li>
+            <strong>Symptom-grounded Contrastive Decoding (SCD):</strong> constructs an anchor prompt using high-confidence findings (e.g., “Atelectasis, Cardiomegaly”) and generates a contrastive logits path conditioned on this prompt. The final logits are a weighted interpolation between the anchor-conditioned and original paths, encouraging the model to mention supported findings and suppress false negatives.
+          </li>
+          <li>
+            <strong>Expert-informed Contrastive Decoding (ECD):</strong> transforms expert probabilities into token-level logit biases via log-odds conversion. These biases are injected into the logits from the first stage, softly penalising unsupported findings and reducing false positives.
+          </li>
         </ul>
         <p>
-          These refined features are fed into Meditron, a specialised medical large language model (LLM), to generate comprehensive, temporally-aware radiology reports. Libra’s modular design seamlessly integrates state-of-the-art open-source pre-trained models for both image and text, aligning them through a temporal-aware adapter to ensure robust cross-modal reasoning and understanding.
+          This two-stage mechanism enables CCD to progressively guide generation with both symbolic supervision (via prompts) and probabilistic constraints (via logits), achieving robust improvements in both report generation and VQA. CCD is fully model-agnostic and integrates seamlessly with state-of-the-art radiology MLLMs such as <em>MAIRA-2</em>, <em>Libra</em>, <em>LLaVA-Rad</em>, and <em>LLaVA-Med</em>.
         </p>
         <p>
-          Through a two-stage training strategy, Libra demonstrates the powerful potential of multimodal large language models (MLLMs) in specialised radiology applications. Extensive experiments on the <strong>MIMIC-CXR dataset</strong> highlight Libra's performance, setting a new state-of-the-art benchmark among models of the same parameter scale.
+        Unlike prior contrastive decoding approaches that rely on perturbed visual or textual inputs, CCD leverages clinically grounded signals from expert models to provide task-specific and symptom-level control during generation.
         </p>
       </div>
     </div>
@@ -268,25 +269,60 @@
       <h2 class="title is-3">Key Contributions</h2>
       <div class="content has-text-justified">
         <ul>
-          <li><b style="color: #FF6347;">Temporal Awareness:</b> Libra captures and synthesizes temporal changes in medical images, addressing the challenge of handling prior study citations in RRG tasks.</li>
-          <li><b style="color: #4682B4;">Innovative Architecture:</b> The Temporal Alignment Connector (TAC) ensures high-granularity feature extraction and temporal integration, significantly enhancing cross-modal reasoning capabilities.</li>
-          <li><b style="color: #32CD32;">State-of-the-Art Performance:</b> Libra achieves outstanding results on the MIMIC-CXR dataset, outperforming existing MLLMs in both accuracy and temporal reasoning.</li>
-          <li><b style="color: #FFD700;">Libra Repository:</b> Our code space provides a public and detailed implementation of Libra, facilitating reproducibility and further research in the field, and integrates both training and evaluation processes, ensuring a streamlined and efficient workflow for developing and testing radiology report generation models.</li>
+          <li><b style="color: #FF6347;">Empirical Insight:</b> We systematically analyse prompt-induced hallucinations in radiology MLLMs and demonstrate that noisy clinical sections—such as irrelevant or contradictory prompts—can trigger unsupported findings across multiple datasets.</li>
+          <li><b style="color: #4682B4;">Inference-time Framework:</b> We propose <strong>Clinical Contrastive Decoding (CCD)</strong>, a dual-stage inference strategy that incorporates expert-derived labels as prompts and probabilistic logits adjustments. CCD requires no retraining, architectural changes, or external retrieval modules.</li>
+          <li><b style="color: #32CD32;">Consistent Gains:</b> Extensive experiments on <em>MIMIC-CXR</em>, <em>IU-Xray</em>, and <em>CheXpert Plus</em> show that CCD improves RadGraph-F1 by up to <strong>+17%</strong> and enhances VQA accuracy—all without modifying model weights or architecture.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Experimental Results -->
+<!-- Empirical Analyses -->
 <section class="section">
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
-      <h2 class="title is-3">Experimental Results</h2>
+      <h2 class="title is-3">Empirical Analyses</h2>
+      <div class="content has-text-justified">
+
+        <p>
+          To understand how hallucinations arise in radiology MLLMs, we conduct a systematic study on the <strong>MIMIC-CXR</strong> dataset, evaluating how different clinical sections affect report generation. 
+          The table below quantifies the impact of appending specific sections (e.g., <em>Indication</em>, <em>Technique</em>, <em>Comparison</em>) on both lexical and clinical metrics.
+        </p>
+
+        <div class="columns is-centered">
+          <div class="column is-centered">
+            <img src="static/images/table_1.png" alt="Medical Hallucination Analysis Table" style="display: block; margin: 0 auto; max-width: 100%;">
+            <p class="has-text-centered is-size-7 has-text-grey">Table: Evaluation of prompt-induced hallucinations with different clinical sections. ↓ indicates performance degradation.</p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Hallucination Drivers: Clinical Context Sensitivity.</strong> Our results show that appending different clinical sections leads to inconsistent—and sometimes harmful—effects on generation. For example, adding <em>History</em> or <em>Technique</em> can slightly improve fluency due to stylistic overlap with report narratives. However, <em>Comparison</em> consistently harms performance across all metrics (e.g., BERTScore ↓ 8.12), as it often references prior images or temporal changes that are absent in the current input. This mismatch between prompt and image causes the model to hallucinate unsupported findings.
+        </p>
+
+        <p>
+          Clinically, we observe that the inclusion of misleading or overly strong prompts can cause the model to overlook subtle image features (e.g., Pleural Effusion, Atelectasis), leading to both over-diagnosis and under-detection. These findings highlight the limitations of naïvely using full report context as generation input.
+        </p>
+
+        <p>
+          <strong>Motivation for CCD:</strong> These empirical observations motivate the need for a decoding-time solution that selectively integrates structured, image-grounded signals—rather than relying on potentially noisy clinical text prompts. Our proposed <strong>CCD</strong> framework addresses this by incorporating expert-derived labels and probabilities to guide generation in a controlled and clinically consistent manner.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experimental Results -->
+<section class="section hero is-light">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Experimental Results on RRG</h2>
       <div class="content has-text-justified">
         <div class="columns is-centered">
           <div class="column is-centered">
-            <img src="static/images/results.png" style="display: block; margin: 0 auto;">
+            <img src="static/images/table_2.png" style="display: block; margin: 0 auto;">
           </div>
         </div>
       </div>
@@ -294,14 +330,31 @@
   </div>
 </section>
 
-<section class="section hero is-light">
+<!-- Experimental Results -->
+<section class="section hero">
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
-      <h2 class="title is-3">Performance Analysis</h2>
+      <h2 class="title is-3">Experimental Results on VQA</h2>
       <div class="content has-text-justified">
         <div class="columns is-centered">
           <div class="column is-centered">
-            <img src="static/images/figure_3.png" style="display: block; margin: 0 auto;">
+            <img src="static/images/table_3.png" style="display: block; margin: 0 auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABLATION STUDIES -->
+<section class="section hero is-light">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Ablation Studies</h2>
+      <div class="content has-text-justified">
+        <div class="columns is-centered">
+          <div class="column is-centered">
+            <img src="static/images/table_4.png" style="display: block; margin: 0 auto;">
           </div>
         </div>
       </div>
@@ -314,14 +367,12 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-@misc{zhang2025libraleveragingtemporalimages,
-  title={Libra: Leveraging Temporal Images for Biomedical Radiology Analysis}, 
-  author={Xi Zhang and Zaiqiao Meng and Jake Lever and Edmond S. L. Ho},
-  year={2025},
-  eprint={2411.19378},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2411.19378}, 
+@inproceedings{zhang2026ccd,
+  title={{CCD}: Mitigating Hallucinations in Radiology {MLLMs} via Clinical Contrastive Decoding},
+  author={Zhang, Xi and Meng, Zaiqiao and Lever, Jake and Ho, Edmond S. L.},
+  booktitle={International Conference on Learning Representations},
+  year={2026},
+  url={https://x-izhang.github.io/CCD/}
 }
 </code></pre>
   </div>
