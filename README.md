@@ -10,7 +10,7 @@
 
 <div align="center">
 
-[![Project Page](https://img.shields.io/badge/Project-Page-Green?logo=stylelint)](https://x-izhang.github.io/CCD/)
+[![Project Page](https://img.shields.io/badge/Project-Page-Green?logo=codeblocks)](https://x-izhang.github.io/CCD/)
 [![Gradio Demo](https://img.shields.io/badge/-Online%20Demo-yellow.svg?logo=gradio&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
 [![Evaluation Split](https://img.shields.io/badge/-Test_Dataset-AECBFA?logo=googlecloudstorage&labelColor=grey)](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c)
 [![arXiv](https://img.shields.io/badge/Arxiv-preprint-b31b1b.svg?logo=arXiv)]() 
