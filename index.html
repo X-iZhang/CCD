@@ -145,12 +145,7 @@
       <h4 class="subtitle has-text-centered"></h4>
       🔥<strong><span style="color: #ff3860">[NEWS!]</span></strong> 
         <div class="news-item">
-          🤖 We're still cooking codebase! 🤖
-          <br>
-          ⭐ Give us a star if you like it! ⭐
-        </div>
-        <div class="news-item">
-          <strong>[27 Sep 2025]</strong> 🎉 Preprint available at <a href="https://arxiv.org/abs/0">arXiv</a>.
+          <strong>[27 Sep 2025]</strong> ⛳ Our preprint is now live on <a href="https://arxiv.org/abs/0">arXiv</a> — check it out for details.
         </div>
     </div>
   </div>
@@ -253,10 +248,10 @@
           </li>
         </ul>
         <p>
-          This two-stage mechanism enables CCD to progressively guide generation with both symbolic supervision (via prompts) and probabilistic constraints (via logits), achieving robust improvements in both report generation and VQA. CCD is fully model-agnostic and integrates seamlessly with state-of-the-art radiology MLLMs such as <em>MAIRA-2</em>, <em>Libra</em>, <em>LLaVA-Rad</em>, and <em>LLaVA-Med</em>.
+          This two-stage mechanism enables CCD to progressively guide generation with both symbolic supervision (via anchor prompts) and probabilistic constraints (via confidence scores), achieving robust improvements in both report generation and VQA. CCD is fully model-agnostic and integrates seamlessly with state-of-the-art radiology MLLMs such as <em>MAIRA-2</em>, <em>Libra</em>, <em>LLaVA-Rad</em>, and <em>LLaVA-Med</em>.
         </p>
         <p>
-        Unlike prior contrastive decoding approaches that rely on perturbed visual or textual inputs, CCD leverages clinically grounded signals from expert models to provide task-specific and symptom-level control during generation.
+        Unlike prior contrastive decoding approaches that rely on perturbed visual or textual inputs, <strong>CCD</strong> leverages clinically grounded signals from expert models to provide task-specific and symptom-level control during generation.
         </p>
       </div>
     </div>
@@ -270,7 +265,7 @@
       <div class="content has-text-justified">
         <ul>
           <li><b style="color: #FF6347;">Empirical Insight:</b> We systematically analyse prompt-induced hallucinations in radiology MLLMs and demonstrate that noisy clinical sections—such as irrelevant or contradictory prompts—can trigger unsupported findings across multiple datasets.</li>
-          <li><b style="color: #4682B4;">Inference-time Framework:</b> We propose <strong>Clinical Contrastive Decoding (CCD)</strong>, a dual-stage inference strategy that incorporates expert-derived labels as prompts and probabilistic logits adjustments. CCD requires no retraining, architectural changes, or external retrieval modules.</li>
+          <li><b style="color: #4682B4;">Inference-time Framework:</b> We propose <strong>Clinical Contrastive Decoding (CCD)</strong>, a dual-stage inference strategy that incorporates expert-derived labels as anchor prompts and probabilistic logits adjustments. CCD requires no retraining, architectural changes, or external retrieval modules.</li>
           <li><b style="color: #32CD32;">Consistent Gains:</b> Extensive experiments on <em>MIMIC-CXR</em>, <em>IU-Xray</em>, and <em>CheXpert Plus</em> show that CCD improves RadGraph-F1 by up to <strong>+17%</strong> and enhances VQA accuracy—all without modifying model weights or architecture.</li>
         </ul>
       </div>
@@ -293,7 +288,7 @@
         <div class="columns is-centered">
           <div class="column is-centered">
             <img src="static/images/table_1.png" alt="Medical Hallucination Analysis Table" style="display: block; margin: 0 auto; max-width: 100%;">
-            <p class="has-text-centered is-size-7 has-text-grey">Table: Evaluation of prompt-induced hallucinations with different clinical sections. ↓ indicates performance degradation.</p>
+            <!-- <p class="has-text-centered is-size-7 has-text-grey">Table: Evaluation of prompt-induced hallucinations with different clinical sections. ↓ indicates performance degradation.</p> -->
           </div>
         </div>
 
@@ -334,6 +329,22 @@
 <section class="section hero">
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
+      <h2 class="title is-3">Additional Experimental Results on RRG</h2>
+      <div class="content has-text-justified">
+        <div class="columns is-centered">
+          <div class="column is-centered">
+            <img src="static/images/table_6.png" style="display: block; margin: 0 auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experimental Results -->
+<section class="section hero is-light">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
       <h2 class="title is-3">Experimental Results on VQA</h2>
       <div class="content has-text-justified">
         <div class="columns is-centered">
@@ -347,7 +358,7 @@
 </section>
 
 <!-- ABLATION STUDIES -->
-<section class="section hero is-light">
+<section class="section hero">
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
       <h2 class="title is-3">Ablation Studies</h2>
@@ -366,12 +377,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>
-@inproceedings{zhang2026ccd,
-  title={{CCD}: Mitigating Hallucinations in Radiology {MLLMs} via Clinical Contrastive Decoding},
+    <pre><code>@inproceedings{zhang2026ccd,
+  title={CCD: Mitigating Hallucinations in Radiology MLLMs via Clinical Contrastive Decoding},
   author={Zhang, Xi and Meng, Zaiqiao and Lever, Jake and Ho, Edmond S. L.},
-  booktitle={International Conference on Learning Representations},
-  year={2026},
+  booktitle=tbd,
+  year={2025},
   url={https://x-izhang.github.io/CCD/}
 }
 </code></pre>
