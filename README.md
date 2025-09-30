@@ -10,7 +10,7 @@
 
 <div align="center">
 
-[![Project Page](https://img.shields.io/badge/Project-Page-Green?logo=codeblocks)](https://x-izhang.github.io/CCD/)
+[![Project Page](https://img.shields.io/badge/Project-Page-4285F4?logo=googlelens)](https://x-izhang.github.io/CCD/)
 [![arXiv](https://img.shields.io/badge/Arxiv-2509.23379-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2509.23379) 
 [![Gradio Demo](https://img.shields.io/badge/-Online%20Demo-yellow.svg?logo=gradio&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
 [![Evaluation Split](https://img.shields.io/badge/-Test_Dataset-AECBFA?logo=googlecloudstorage&labelColor=grey)](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c)
@@ -20,6 +20,7 @@
 </div>
 
 ## 🔥 News
+- **[30 Sep 2025]** 🗂️ Processed test data for the *MIMIC-CXR*, *IU-Xray*, and *CheXpert Plus* RRG task is now available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
 - **[27 Sep 2025]** ⛳ Our preprint is now live on [arXiv](https://arxiv.org/abs/2509.23379) — check it out for details.
 
 ## Overview
