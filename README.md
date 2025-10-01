@@ -20,7 +20,7 @@
 </div>
 
 ## 🔥 News
-- **[30 Sep 2025]** 🗂️ Processed test data for the *MIMIC-CXR*, *IU-Xray*, and *CheXpert Plus* RRG task is now available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
+- **[30 Sep 2025]** 🗂️ Processed test data for the *MIMIC-CXR*, *IU-Xray*, *CheXpert Plus* RRG task and *Medical-CXR-VQA* are now available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
 - **[27 Sep 2025]** ⛳ Our preprint is now live on [arXiv](https://arxiv.org/abs/2509.23379) — check it out for details.
 
 ## Overview
