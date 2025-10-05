@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ccd"
+version = "1.0.0"
+description = "CCD: Mitigating Hallucinations in Radiology MLLMs via Clinical Contrastive Decoding"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Xi Zhang" },
+]
+maintainers = [
+    { name = "Xi Zhang" },
+]
+keywords = ["radiology", "MLLM", "hallucination", "contrastive-decoding", "medical-ai"]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+    "scikit-image",
+    "torchxrayvision",
+    "libra @ git+https://github.com/X-iZhang/Libra.git@v1.0.3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/X-iZhang/CCD"
+"Bug Tracker" = "https://github.com/X-iZhang/CCD/issues"
+"Documentation" = "https://github.com/X-iZhang/CCD#readme"
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
+
+[tool.wheel]
+exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
+
+[tool.setuptools]
+include-package-data = true
