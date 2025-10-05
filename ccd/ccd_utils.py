@@ -278,7 +278,7 @@ def ccd(label_score_dict,  model, tokenizer, image_tensors,
             logits_orig = model(input_ids=generated_ids, images=image_tensors, attention_mask=torch.ones_like(generated_ids)).logits[:, -1, :]
             logits_clinical = model(input_ids=dist_generated_ids, images=image_tensors, attention_mask=torch.ones_like(dist_generated_ids)).logits[:, -1, :]
 
-        # ====== 1) Convert to log-probabilities to remove scale/shift differences ======
+        # ====== Convert to log-probabilities to remove scale/shift differences ======
         logits_orig = F.log_softmax(logits_orig, dim=-1)
         logits_clinical = F.log_softmax(logits_clinical, dim=-1)
         
