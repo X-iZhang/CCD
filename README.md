@@ -34,6 +34,9 @@ Multimodal large language models (MLLMs) are advancing radiology by combining im
 ## 📖 Contents
 - [⛏️ Installation](#️-installation)
 - [⚡ Quick Start](#-quick-start)
+  - [CLI Inference](#cli-inference)
+  - [Script Inference](#script-inference)
+  - [Gradio Web Interface](#gradio-web-interface)
 - [🛠️ Advanced Usage](#️-advanced-usage)
   - [Supported MLLM Models](#supported-mllm-models)
   - [Supported Expert Models](#supported-expert-models)
@@ -124,14 +127,13 @@ output = ccd_eval(
     model_path="X-iZhang/libra-maira-2",  # or your custom radiology MLLM
     image="./path/to/Chest_Xray.jpg",
     question="Describe the findings in this chest X-ray.",
-    alpha=0.5,      # Clinical guidance weight
-    beta=0.5,       # Expert token weight
-    gamma=10,       # Token bias magnitude
-    length_penalty=1.0,
-    temperature=1.0,
-    top_p=0.9,
-    top_k=50,
-    expert_model="DenseNet",  # or "MedSiglip"
+    alpha=0.5,        # Clinical guidance weight
+    beta=0.5,         # Expert token weight
+    gamma=10,         # Token bias magnitude
+    temperature=0.9,  # Sampling temperature
+    top_p=0.9,        # Nucleus sampling probability
+    top_k=50,         # Top-k sampling
+    expert_model="DenseNet",    # or "MedSiglip"
     max_new_tokens=256
 )
 print(output)
