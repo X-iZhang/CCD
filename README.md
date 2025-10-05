@@ -47,8 +47,8 @@ Multimodal large language models (MLLMs) are advancing radiology by combining im
 
 ## ⛏️ Installation
 
-> [!TIP]
-> We strongly recommend using [`uv`](https://pypi.org/project/uv) for installing the project — it's significantly faster and more reliable than `pip`.
+> [!TIP]  
+> Use [`uv`](https://pypi.org/project/uv) for installation — it's faster and more reliable than `pip`.
 
 ### Option 1:
 Install the latest version directly from GitHub for quick setup:
@@ -108,7 +108,7 @@ python -m ccd.run_ccd \
 |-----------|--------------|----------|
 | `--alpha` | Clinical guidance weight (range: 0.0–1.0) | 0.5 |
 | `--beta` | Expert token weight (range: 0.0–1.0) | 0.5 |
-| `--gamma` | Token bias magnitude (range: 1–20) | 10 |
+| `--gamma` | Token bias magnitude (range: 2, 5, 10) | 10 |
 | `--expert-model` | Choice of expert model: `"DenseNet"` or `"MedSiglip"` | DenseNet |
 
 ### Script Inference
@@ -209,7 +209,7 @@ CCD integrates two expert models for **clinical signal extraction**:
   - Higher = stronger push toward clinical terminology
   - Recommended: 0.3-0.7
 
-- **`gamma` (1-20)**: Maximum token bias magnitude
+- **`gamma` (2, 5, 10)**: Maximum token bias magnitude
   - 2: Subtle influence
   - 5: Moderate influence
   - 10: Strong influence (default)
@@ -254,11 +254,12 @@ If you find our paper and code useful in your research and applications, please 
 
 ## 📚 Acknowledgments
 
-This project builds upon several excellent open-source projects:
+This project builds upon the following outstanding open-source works:
 
-- [Libra](https://github.com/X-iZhang/Libra) - Temporal medical image analysis framework, with multiple radiology MLLMs
-- [TorchXRayVision](https://github.com/mlmed/torchxrayvision) - Pretrained models for chest X-ray analysis
-- [MedSigLIP](https://huggingface.co/google/medsiglip-448) - Medical Signal Language Image Pretraining
+- [**Libra**](https://github.com/X-iZhang/Libra) — A flexible toolkit supporting multiple radiology LLM backbones, covering the full pipeline from training to inference.
+- [**TorchXRayVision**](https://github.com/mlmed/torchxrayvision) — Pretrained models for chest X-ray analysis.  
+- [**MedSigLIP**](https://huggingface.co/google/medsiglip-448) — Medical Signal–Language Image Pretraining.
+- [**RadEval**](https://pypi.org/project/RadEval/) — A unified framework for radiology text evaluation.
 
 We thank the authors for their valuable contributions to the medical AI community.
 
