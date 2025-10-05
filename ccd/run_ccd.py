@@ -257,7 +257,7 @@ if __name__ == "__main__":
     parser.add_argument("--max-new-tokens", type=int, default=128, help="Maximum number of new tokens to generate")
     parser.add_argument("--length-penalty", type=float, default=1.0, help="Length penalty for generation")
     parser.add_argument("--no-repeat-ngram-size", type=int, default=3, help="No repeat n-gram size")
-    parser.add_argument("--temperature", type=float, default=1.0, help="Temperature for sampling")
+    parser.add_argument("--temperature", type=float, default=0.0, help="Temperature for sampling")
     parser.add_argument("--top-p", type=float, default=None, help="Top-p sampling")
     parser.add_argument("--top-k", type=int, default=None, help="Top-k sampling")
     parser.add_argument("--alpha", type=float, default=0.5, help="Alpha for CCD, [0,1]")
