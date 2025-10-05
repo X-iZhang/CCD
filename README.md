@@ -257,7 +257,7 @@ If you find our paper and code useful in your research and applications, please 
 This project builds upon the following outstanding open-source works:
 
 - [**Libra**](https://github.com/X-iZhang/Libra) — A flexible toolkit supporting multiple radiology LLM backbones, covering the full pipeline from training to inference.
-- [**TorchXRayVision**](https://github.com/mlmed/torchxrayvision) — Pretrained models for chest X-ray analysis.  
+- [**TorchXRayVision**](https://github.com/mlmed/torchxrayvision) — A library for chest X-ray datasets and models. 
 - [**MedSigLIP**](https://huggingface.co/google/medsiglip-448) — Medical Signal–Language Image Pretraining.
 - [**RadEval**](https://pypi.org/project/RadEval/) — A unified framework for radiology text evaluation.
 
