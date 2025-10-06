@@ -296,7 +296,7 @@ def main():
         By accessing or using this demo, you acknowledge and agree to the following:
         - **Research & Non-Commercial Purposes**: This demo is provided solely for research and demonstration. It must not be used for commercial activities or profit-driven endeavors.
         - **Not Medical Advice**: All generated content is experimental and must not replace professional medical judgment.
-        - **Content Moderationt**: While we apply basic safety checks, the system may still produce inaccurate or offensive outputs.
+        - **Content Moderation**: While we apply basic safety checks, the system may still produce inaccurate or offensive outputs.
         - **Responsible Use**: Do not use this demo for any illegal, harmful, hateful, violent, or sexual purposes.
         By continuing to use this service, you confirm your acceptance of these terms. If you do not agree, please discontinue use immediately.
         """)
