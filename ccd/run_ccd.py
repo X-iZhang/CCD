@@ -145,6 +145,10 @@ def ccd_eval(
             model_name = get_model_name_from_path(model_path)
             _model_cache[cache_key] = (tokenizer, model, image_processor, context_len)
 
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token_id = tokenizer.eos_token_id
+        print(f'[Warning] tokenizer.pad_token_id is None, set to eos_token_id {tokenizer.eos_token_id}')
+
     tokens_to_add = [t for t in special_tokens if t not in tokenizer.get_vocab()]
 
     if len(tokens_to_add) > 0:
