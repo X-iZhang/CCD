@@ -323,5 +323,6 @@ def ccd(label_score_dict,  model, tokenizer, image_tensors,
         dist_generated_ids = torch.cat([dist_generated_ids, next_token_id], dim=1)
 
     ccd_output = tokenizer.decode(generated_ids[0][input_ids.shape[1]:], skip_special_tokens=True)
-
+    ccd_output = ccd_output.strip()
+    
     return "", ccd_output
