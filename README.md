@@ -16,7 +16,7 @@
 </div>
 
 ## 🔥 News
-
+- **[06 Oct 2025]** 🎮 The **online demo** is available at [Hugging Face Spaces](https://huggingface.co/spaces/X-iZhang/CCD). Have fun exploring!
 - **[30 Sep 2025]** 🗂️ Processed test data for the [*MIMIC-CXR*](https://huggingface.co/datasets/X-iZhang/MIMIC-CXR-RRG), [*IU-Xray*](https://huggingface.co/datasets/X-iZhang/IU-Xray-RRG), [*CheXpert Plus*](https://huggingface.co/datasets/X-iZhang/CheXpert-plus-RRG) RRG task and [*Medical-CXR-VQA*](https://huggingface.co/datasets/X-iZhang/Medical-CXR-VQA) are now available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
 - **[27 Sep 2025]** ⛳ Our preprint is now live on [arXiv](https://arxiv.org/abs/2509.23379) — check it out for details.
 
