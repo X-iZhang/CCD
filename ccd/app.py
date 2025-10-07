@@ -228,7 +228,7 @@ def main():
                     )
                     prompt = gr.Textbox(
                         label="Question / Prompt",
-                        value="What are the findings in this chest X-ray?",
+                        value="What are the findings in this chest X-ray? Give a detailed description.",
                         lines=1
                     )
 
