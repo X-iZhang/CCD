@@ -72,8 +72,19 @@ def run_eval(
     if isinstance(image, str):
         image = load_images(image)
 
-    images = [image]
-    queries = [question]
+    elif isinstance(image, list) and all(isinstance(im, str) for im in image):
+        image = [load_images(im) for im in image]
+    
+    if not isinstance(image, list):
+        images = [image]
+    else:
+        images = image
+
+    if not isinstance(question, list):
+        queries = [question]
+    else:
+        queries = question
+        
     assert isinstance(images, list) and isinstance(queries, list), "images and queries must be lists"
     assert len(images) == len(queries), "images and queries must be of the same length"
 
