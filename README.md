@@ -4,7 +4,15 @@
   <strong>CCD: Mitigating Hallucinations in Radiology MLLMs via Clinical Contrastive Decoding</strong>
 </h1>
 
+
 <div align="center">
+
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&width=500&lines=Train+less%2C+decode+smarter.;Think+clinically%2C+act+precisely.;Powered+by+Clinical+Contrastive+Decoding."
+       alt="Typing SVG"
+       style="margin-bottom:-10px; display:block;" />
+</a>
+
 
 [![Project Page](https://img.shields.io/badge/Project-Page-4285F4?logo=googlelens)](https://x-izhang.github.io/CCD/)
 [![arXiv](https://img.shields.io/badge/Arxiv-2509.23379-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2509.23379) 
