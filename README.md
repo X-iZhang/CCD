@@ -166,7 +166,11 @@ You can launch the Gradio demo locally with:
 python -m ccd.app
 ```
 
-Or try it directly on [🤗 **Hugging Face Spaces** 🤗](https://huggingface.co/spaces/X-iZhang/CCD).
+- Or try it directly on [🤗 **Hugging Face Spaces** 🤗](https://huggingface.co/spaces/X-iZhang/CCD).
+
+Once the Gradio web interface is launched, you can open it using the URL printed on your screen. You will notice that both the default MAIRA-2 model and the expert models are ready for setup, with more models available in the list. Simply upload a chest X-ray image, enter your question, and click `🚀Generate` to view the results!
+
+![demo](./assets/demo.gif)
 
 ## 🛠️ Advanced Usage
 
