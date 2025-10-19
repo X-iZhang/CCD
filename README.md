@@ -13,13 +13,12 @@
        style="margin-bottom:-10px; display:block;" />
 </a>
 
-
-[![Project Page](https://img.shields.io/badge/Project-Page-4285F4?logo=googlelens)](https://x-izhang.github.io/CCD/)
-[![arXiv](https://img.shields.io/badge/Arxiv-2509.23379-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2509.23379) 
-[![Gradio Demo](https://img.shields.io/badge/-Online%20Demo-yellow.svg?logo=gradio&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
-[![Evaluation Split](https://img.shields.io/badge/-Test_Dataset-AECBFA?logo=googlecloudstorage&labelColor=grey)](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?)](https://github.com/X-iZhang/CCD/blob/main/LICENSE)
-[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD&label=Views&countColor=%23f36f43&style=flat)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD)
+[![Project Page](https://img.shields.io/badge/Project-Page-4285F4?style=for-the-badge&logo=googlelens&logoColor=4285F4)](https://x-izhang.github.io/CCD/)
+[![arXiv](https://img.shields.io/badge/arXiv-2509.23379-b31b1b?style=for-the-badge&logo=arxiv&logoColor=b31b1b)](https://arxiv.org/abs/2509.23379)
+[![Gradio Demo](https://img.shields.io/badge/Gradio-Online_Demo-FFCC00?style=for-the-badge&logo=gradio&logoColor=yellow&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
+[![Evaluation Split](https://img.shields.io/badge/Test_Dataset-AECBFA?style=for-the-badge&logo=huggingface&logoColor=FFCC00&labelColor=grey)](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://github.com/X-iZhang/CCD/blob/main/LICENSE)
+[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD&label=Views&countColor=%23f36f43&style=for-the-badge)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD)
 
 </div>
 
