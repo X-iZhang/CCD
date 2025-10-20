@@ -198,6 +198,8 @@ CCD is compatible with any radiology MLLM that follows the **Libra/LLaVA** archi
 | **Med-CXRGen-F** | [X-iZhang/Med-CXRGen-F](https://huggingface.co/X-iZhang/Med-CXRGen-F) |
 | **Med-CXRGen-I** | [X-iZhang/Med-CXRGen-I](https://huggingface.co/X-iZhang/Med-CXRGen-I) |
 
+> [!WARNING]  
+> The model adapted from the [**Libra**](https://github.com/X-iZhang/Libra) repository is intended for demonstration purposes only. For accurate evaluation, please refer to the original model weights and configuration settings, particularly the chat template.
 
 ### Supported Expert Models
 
@@ -206,11 +208,14 @@ CCD integrates two expert models for **clinical signal extraction**:
 > [!NOTE]  
 > To switch expert models, simply set the `--expert-model` argument (CLI) or `expert_model` parameter (Python) to one of the following names.  
 
-| Model | Checkpoint |
-|--------|-------------|
-| **DenseNet** | [torchxrayvision/densenet121-res224-chex](https://huggingface.co/torchxrayvision/densenet121-res224-chex) |
-| **MedSiglip** | [google/medsiglip-448](https://huggingface.co/google/medsiglip-448) |
+| Model | Checkpoint | Note |
+|--------|-------------|------|
+| **DenseNet** | [torchxrayvision/densenet121-res224-chex](https://huggingface.co/torchxrayvision/densenet121-res224-chex) | CheXpert (Stanford)|
+| **MedSiglip** | [google/medsiglip-448](https://huggingface.co/google/medsiglip-448) |  Variant of [SigLIP](https://arxiv.org/abs/2303.15343) |
+| **View Model** | [ChestViewSplit](https://github.com/xinario/chestViewSplit) |  Target: ['Frontal', 'Lateral'] |
 
+> [!TIP]  
+> When deploying *DenseNet*, it has been upgraded to support the *view classification expert model*, which helps the system better understand the view position of chest X-rays, thereby improving the accuracy of report generation. *MedSigLIP* has also been configured accordingly. The design is inspired by the [MAIRA-2 chat template](https://huggingface.co/microsoft/maira-2/blob/main/processing_maira2.py#L191).
 
 ### Parameter Settings
 
@@ -227,6 +232,9 @@ CCD integrates two expert models for **clinical signal extraction**:
   - 5: Moderate influence
   - 10: Strong influence (default)
 
+> [!TIP]  
+> These parameters can be set beyond the recommended range for adversarial testing to observe CCD’s behaviour under extreme conditions.
+
 ## 🗂️ Dataset  
 
 CCD supports multiple medical imaging datasets commonly used in radiology research:  
@@ -236,11 +244,11 @@ CCD supports multiple medical imaging datasets commonly used in radiology resear
 - **CheXpert** — Large-scale dataset for chest X-ray interpretation.  
 
 > [!NOTE]  
-> For evaluation, we provide pre-processed test splits for **MIMIC-CXR**, **IU-Xray**, and **CheXpert Plus**, available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
+> For evaluation, we provide pre-processed test splits for **MIMIC-CXR**, **IU-Xray**, and **CheXpert Plus**, available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c). Please note that the image quality of these datasets has been compressed for efficient storage and sharing.
 
 ## 📊 Evaluation  
 
-For evaluating generated reports, we recommend using [**RadEval**](https://pypi.org/project/RadEval/) — a unified framework for radiology text evaluation that integrates multiple standard metrics.  
+For evaluating generated reports, we recommend using [**RadEval**](https://pypi.org/project/RadEval/) — a unified framework for radiology text evaluation that integrates multiple standard metrics. Details can be found in the [GitHub repository](https://github.com/jbdel/RadEval).
 
 You can install RadEval via pip:  
 ```bash
