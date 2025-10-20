@@ -219,7 +219,7 @@ CCD integrates two expert models for **clinical signal extraction**:
 |--------|-------------|------|
 | **DenseNet** | [torchxrayvision/densenet121-res224-chex](https://huggingface.co/torchxrayvision/densenet121-res224-chex) | CheXpert (Stanford)|
 | **MedSiglip** | [google/medsiglip-448](https://huggingface.co/google/medsiglip-448) |  Variant of [SigLIP](https://arxiv.org/abs/2303.15343) |
-| **View Model** | [ChestViewSplit](https://github.com/xinario/chestViewSplit) |  Target: ['Frontal', 'Lateral'] |
+| **View Model** | [ChestViewSplit](https://github.com/xinario/chestViewSplit) |  `Frontal` or `Lateral` |
 
 > [!TIP]  
 > When deploying *DenseNet*, it has been upgraded to support the *view classification expert model*, which helps the system better understand the view position of chest X-rays, thereby improving the accuracy of report generation. *MedSigLIP* has also been configured accordingly. The design is inspired by the [MAIRA-2 chat template](https://huggingface.co/microsoft/maira-2/blob/main/processing_maira2.py#L191).
