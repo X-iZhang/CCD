@@ -20,6 +20,12 @@
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://github.com/X-iZhang/CCD/blob/main/LICENSE)
 [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD&label=Views&countColor=%23f36f43&style=for-the-badge)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD)
 
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&color=F77D67&width=435&lines=CCD%2B+coming+soon!+%F0%9F%9A%80+"
+       alt="Typing SVG"
+       style="margin-bottom:-10px; display:block;" />
+</a>
+
 </div>
 
 ## 🔥 News
