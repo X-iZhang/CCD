@@ -24,7 +24,8 @@
 
 ## 🔥 News
 - **[06 Oct 2025]** 🎮 The **online demo** is available at [Hugging Face Spaces](https://huggingface.co/spaces/X-iZhang/CCD). Have fun exploring!
-- **[30 Sep 2025]** 🗂️ Processed test data for the [*MIMIC-CXR*](https://huggingface.co/datasets/X-iZhang/MIMIC-CXR-RRG), [*IU-Xray*](https://huggingface.co/datasets/X-iZhang/IU-Xray-RRG), [*CheXpert Plus*](https://huggingface.co/datasets/X-iZhang/CheXpert-plus-RRG) RRG task and [*Medical-CXR-VQA*](https://huggingface.co/datasets/X-iZhang/Medical-CXR-VQA) are now available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c). (Carefully read the READMEs; images are compressed for HF upload — use the original datasets for evaluation.)
+- **[01 Oct 2025]** 🔩 CCD has been upgraded to support **view classification** for chest X-rays. For details, see the [Supported Expert Models](https://github.com/X-iZhang/CCD/tree/main?tab=readme-ov-file#supported-expert-models) section.
+- **[30 Sep 2025]** 🗂️ The processed test data for quick start are now available — enjoy exploring with [the provided guidelines](https://github.com/X-iZhang/CCD/tree/main?tab=readme-ov-file#%EF%B8%8F-dataset)!
 - **[27 Sep 2025]** ⛳ Our preprint is now live on [arXiv](https://arxiv.org/abs/2509.23379) — check it out for details.
 
 
@@ -244,7 +245,10 @@ CCD supports multiple medical imaging datasets commonly used in radiology resear
 - **CheXpert** — Large-scale dataset for chest X-ray interpretation.  
 
 > [!NOTE]  
-> For evaluation, we provide pre-processed test splits for **MIMIC-CXR**, **IU-Xray**, and **CheXpert Plus**, available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c). Please note that the image quality of these datasets has been compressed for efficient storage and sharing.
+> To facilitate hands-on testing, we provide pre-processed test splits for **MIMIC-CXR**, **IU-Xray**, and **CheXpert Plus**, available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
+
+> [!WARNING]
+> Carefully read the `READMEs`; Please note that the image quality of these datasets has been compressed for efficient storage and sharing. Use the original datasets for evaluation.
 
 ## 📊 Evaluation  
 
