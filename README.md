@@ -13,18 +13,18 @@
        style="margin-bottom:-10px; display:block;" />
 </a>
 
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&color=F77D67&width=435&lines=CCD%2B+coming+soon!+%F0%9F%9A%80+"
+       alt="Typing SVG"
+       style="margin-bottom:-10px; display:block;" />
+</a>
+
 [![Project Page](https://img.shields.io/badge/Project-Page-4285F4?style=for-the-badge&logo=googlelens&logoColor=4285F4)](https://x-izhang.github.io/CCD/)
 [![arXiv](https://img.shields.io/badge/arXiv-2509.23379-b31b1b?style=for-the-badge&logo=arxiv&logoColor=b31b1b)](https://arxiv.org/abs/2509.23379)
 [![Gradio Demo](https://img.shields.io/badge/Gradio-Online_Demo-FFCC00?style=for-the-badge&logo=gradio&logoColor=yellow&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
 [![Evaluation Split](https://img.shields.io/badge/HF-Test_Dataset-AECBFA?style=for-the-badge&logo=huggingface&logoColor=FFCC00&labelColor=grey)](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://github.com/X-iZhang/CCD/blob/main/LICENSE)
 [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD&label=Views&countColor=%23f36f43&style=for-the-badge)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FX-iZhang%2FCCD)
-
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&color=F77D67&width=435&lines=CCD%2B+coming+soon!+%F0%9F%9A%80+"
-       alt="Typing SVG"
-       style="margin-bottom:-10px; display:block;" />
-</a>
 
 </div>
 
