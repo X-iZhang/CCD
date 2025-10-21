@@ -246,12 +246,13 @@ CCD integrates two expert models for **clinical signal extraction**:
 
 CCD supports multiple medical imaging datasets commonly used in radiology research:  
 
-- **MIMIC-CXR** — Chest X-ray images with corresponding radiology reports.  
-- **IU-Xray** — Chest X-ray dataset with structured annotations.  
-- **CheXpert** — Large-scale dataset for chest X-ray interpretation.  
+- [**MIMIC-CXR**](https://physionet.org/content/mimic-cxr/) — Chest X-ray images with corresponding radiology reports.  
+- [**IU-Xray**](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university) — Chest X-ray dataset with structured annotations.  
+- [**CheXpert Plus**](https://aimi.stanford.edu/datasets/chexpert-plus) — Large-scale dataset for chest X-ray interpretation.  
+- [**Medical-CXR-VQA**](https://physionet.org/content/medical-cxr-vqa-dataset/) — A dataset for visual question answering in chest X-rays.
 
 > [!NOTE]  
-> To facilitate hands-on testing, we provide pre-processed test splits for **MIMIC-CXR**, **IU-Xray**, and **CheXpert Plus**, available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
+> To facilitate hands-on testing, we provide pre-processed test splits for [**MIMIC-CXR**](https://huggingface.co/datasets/X-iZhang/MIMIC-CXR-RRG), [**IU-Xray**](https://huggingface.co/datasets/X-iZhang/IU-Xray-RRG), [**CheXpert Plus**](https://huggingface.co/datasets/X-iZhang/CheXpert-plus-RRG) and [**Medical-CXR-VQA**](https://huggingface.co/datasets/X-iZhang/Medical-CXR-VQA), available on [Hugging Face Collections](https://huggingface.co/collections/X-iZhang/ccd-68b9f5db2f03525b465ee09c).
 
 > [!WARNING]
 > Carefully read the `READMEs`; Please note that the image quality of these datasets has been compressed for efficient storage and sharing. Use the original datasets for evaluation.
