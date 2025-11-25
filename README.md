@@ -301,7 +301,7 @@ This project builds upon the following outstanding open-source works:
 We thank the authors for their valuable contributions to the medical AI community.
 
 ## 📨 Contact
-For any enquiries or collaboration opportunities, please contact: x.zhang.6@research.gla.ac.uk
+For any enquiries or collaboration opportunities, please contact: [**x.zhang.6@research.gla.ac.uk**](mailto:x.zhang.6@research.gla.ac.uk)
 
 ## 📜 License
 
