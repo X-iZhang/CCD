@@ -13,12 +13,6 @@
        style="margin-bottom:-10px; display:block;" />
 </a>
 
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&color=F77D67&width=435&lines=CCD%2B+coming+soon!+%F0%9F%9A%80+"
-       alt="Typing SVG"
-       style="margin-bottom:-10px; display:block;" />
-</a>
-
 [![Project Page](https://img.shields.io/badge/Project-Page-4285F4?style=for-the-badge&logo=googlelens&logoColor=4285F4)](https://x-izhang.github.io/CCD/)
 [![arXiv](https://img.shields.io/badge/arXiv-2509.23379-b31b1b?style=for-the-badge&logo=arxiv&logoColor=b31b1b)](https://arxiv.org/abs/2509.23379)
 [![Gradio Demo](https://img.shields.io/badge/Gradio-Online_Demo-FFCC00?style=for-the-badge&logo=gradio&logoColor=yellow&labelColor=grey)](https://huggingface.co/spaces/X-iZhang/CCD)
@@ -34,6 +28,16 @@
 - **[30 Sep 2025]** 🗂️ The processed test data for quick start are now available — enjoy exploring with [the provided guidelines](https://github.com/X-iZhang/CCD/tree/main?tab=readme-ov-file#%EF%B8%8F-dataset)!
 - **[27 Sep 2025]** ⛳ Our preprint is now live on [arXiv](https://arxiv.org/abs/2509.23379) — check it out for details.
 
+### 🎯 Call for Contribution
+> We welcome contributions from the community to **`CDD+`** ! If you have ideas for new features or improvements, feel free to open an issue or contact us directly. We are especially interested in contributions that extend **`CCD`** to more label modalities, such as morphology (size/shape), anatomical location, and devices/lines/tubes.
+
+<div align="center">
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&color=F77D67&width=435&lines=CCD%2B+coming+soon!+%F0%9F%9A%80+"
+       alt="Typing SVG"
+       style="margin-bottom:-10px; display:block;" />
+</a>
+</div>
 
 ## Overview
 Multimodal large language models (MLLMs) are advancing radiology by combining image and text understanding, but often generate inaccurate or unsupported clinical details—so-called medical hallucinations. We propose **C**linical **C**ontrastive **D**ecoding (**CCD**), a *training-free* and *retrieval-free* inference framework that integrates structured clinical signals from task‑specific radiology expert models. **`CCD`** reduces hallucinations and improves clinical accuracy without changing the base model. Experiments show **`CCD`** boosts performance on multiple datasets and models, offering a practical way to make radiology MLLMs more reliable.
@@ -59,6 +63,7 @@ Multimodal large language models (MLLMs) are advancing radiology by combining im
 - [📊 Evaluation](#-evaluation)
 - [📝 Citation](#-citation)
 - [📚 Acknowledgments](#-acknowledgments)
+- [📨 Contact](#-contact)
 - [📜 License](#-license)
 - [🧰 Intended Use](#-intended-use)
 
@@ -294,6 +299,9 @@ This project builds upon the following outstanding open-source works:
 - [**RadEval**](https://pypi.org/project/RadEval/) — A unified framework for radiology text evaluation.
 
 We thank the authors for their valuable contributions to the medical AI community.
+
+## 📨 Contact
+For any enquiries or collaboration opportunities, please contact: x.zhang.6@research.gla.ac.uk
 
 ## 📜 License
 
