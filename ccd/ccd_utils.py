@@ -82,6 +82,77 @@ def make_prompts(label):
         f"a chest X-ray with no {label.lower()}"
     ]
 
+def get_device_label2prompts():
+    """
+    Define medical device labels and their corresponding positive/negative prompt pairs.
+    Based on standard Support Devices labels.
+    """
+    label2prompts = {
+        # Airway devices
+        "ET_tube": (
+            "a chest x-ray showing an endotracheal tube in place",
+            "a chest x-ray without an endotracheal tube"
+        ),
+        "Tracheostomy_tube": (
+            "a chest x-ray with a tracheostomy tube",
+            "a chest x-ray without a tracheostomy tube"
+        ),
+        # Enteric / GI tubes
+        "NG_tube": (
+            "a chest x-ray with a nasogastric tube",
+            "a chest x-ray without a nasogastric tube"
+        ),
+        "OG_tube": (
+            "a chest x-ray with an orogastric tube",
+            "a chest x-ray without an orogastric tube"
+        ),
+        "Feeding_tube": (
+            "a chest x-ray with an enteric feeding tube",
+            "a chest x-ray without an enteric feeding tube"
+        ),
+        "Enteric_tube": (
+            "a chest x-ray with an enteric tube",
+            "a chest x-ray without an enteric tube"
+        ),
+        # Vascular access
+        "CVC": (
+            "a chest x-ray with a central venous catheter",
+            "a chest x-ray without a central venous catheter"
+        ),
+        "Central_line": (
+            "a chest x-ray with a central line",
+            "a chest x-ray without a central line"
+        ),
+        "PICC_line": (
+            "a chest x-ray with a peripherally inserted central catheter",
+            "a chest x-ray without a peripherally inserted central catheter"
+        ),
+        # Pleural devices
+        "Chest_tube": (
+            "a chest x-ray with a chest tube",
+            "a chest x-ray without a chest tube"
+        ),
+        "Pigtail_catheter": (
+            "a chest x-ray with a pigtail pleural catheter",
+            "a chest x-ray without a pigtail pleural catheter"
+        ),
+        # Cardiac devices
+        "Pacemaker": (
+            "a chest x-ray with a pacemaker device",
+            "a chest x-ray without a pacemaker device"
+        ),
+        "ICD": (
+            "a chest x-ray with an implantable cardioverter defibrillator",
+            "a chest x-ray without an implantable cardioverter defibrillator"
+        ),
+        # No devices
+        "No_devices": (
+            "a chest x-ray without any tubes, lines, or medical devices",
+            "a chest x-ray with tubes, lines, or medical devices present"
+        ),
+    }
+    return label2prompts
+
 def predict_medsiglip_labels(image):
 
     if image.mode != "RGB":
@@ -166,6 +237,88 @@ def predict_chexpert_labels(image) -> dict:
 
     return label_score_dict
 
+def predict_view_labels(image) -> dict:
+
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+
+    img = np.array(image)
+    img = xrv.datasets.normalize(img, 255)  # Normalize to range expected by xrv
+
+    # Add channel dimension
+    if img.ndim == 2:
+        img = img[None, ...]
+    elif img.ndim == 3 and img.shape[2] == 3:
+        img = img.mean(2)[None, ...]
+
+    # Center crop and resize
+    transform = torchvision.transforms.Compose([
+        xrv.datasets.XRayCenterCrop(),
+        xrv.datasets.XRayResizer(224),
+    ])
+    img = transform(img)
+
+    # Convert to tensor format
+    img_tensor = torch.from_numpy(img).float()  # [1,H,W]
+    img_tensor = img_tensor.unsqueeze(0).to(_DEVICE)  # [B=1, 1, H, W]
+
+    # Predict using the view model
+    _, view_model = _get_chexpert_models()
+    with torch.inference_mode():
+        view_logits = view_model(img_tensor)           # [1, 2]
+        view_probs = F.softmax(view_logits, dim=1)[0].detach().cpu().numpy()
+
+    label_score_dict = {}
+    for label, prob in zip(view_model.targets, view_probs):
+        label_score_dict[label] = float(prob)
+
+    return label_score_dict
+
+def predict_device_labels(image) -> dict:
+    """
+    Predict medical device presence in chest X-ray images using MedSigLip.
+
+    Args:
+        image: PIL.Image object, chest X-ray image
+
+    Returns:
+        dict: Device labels mapped to probability scores
+    """
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+
+    label2prompts = get_device_label2prompts()
+
+    all_prompts = []
+    label2indices = {}
+
+    # Create positive/negative prompt pairs for each device
+    for label, (pos_prompt, neg_prompt) in label2prompts.items():
+        label2indices[label] = (len(all_prompts), len(all_prompts) + 1)
+        all_prompts.extend([pos_prompt, neg_prompt])
+
+    # Use MedSigLip model for inference
+    MedSiglip_model, MedSiglip_processor = _get_med_sigilip_model()
+    inputs = MedSiglip_processor(
+        text=all_prompts,
+        images=[image],
+        padding="max_length",
+        return_tensors="pt"
+    ).to(_DEVICE)
+
+    with torch.no_grad():
+        outputs = MedSiglip_model(**inputs)
+    logits = outputs.logits_per_image.squeeze(0)  # [num_prompts]
+
+    # Compute probability for each device
+    label_score_dict = {}
+    for label, (pos_idx, neg_idx) in label2indices.items():
+        pair_logits = torch.stack([logits[pos_idx], logits[neg_idx]])
+        probs = torch.softmax(pair_logits, dim=0)
+        label_score_dict[label] = probs[0].item()  # Take "positive" probability
+        
+    return label_score_dict
+
 def get_expert_model_token_score_dict(
     label_score_dict: Dict[str, float],
     tokenizer,
@@ -217,6 +370,83 @@ def get_expert_model_token_score_dict(
 
     return token_score_dict
 
+def get_device_token_score_dict(
+    label_score_dict: Dict[str, float],
+    tokenizer,
+    threshold: float = 0.0,
+    only_first_token: bool = True,
+    add_leading_space: bool = False,
+    decay_gamma: float = 0.95,
+) -> Dict[int, float]:
+    """
+    Get token IDs and their enhancement weight scores for medical device labels.
+    Supports multiple expressions for standard device terminology.
+
+    Args:
+    - label_score_dict: dict[str, float], device labels and their scores
+    - tokenizer: HuggingFace tokenizer
+    - threshold: float, threshold for positive vs negative scores
+    - only_first_token: bool, whether to use only the first token of each word (default True)
+    - add_leading_space: bool, whether to add leading space to labels
+    - decay_gamma: float, decay coefficient for multi-token words
+
+    Returns:
+    - Dict[int, float]: token_id → score (positive for boosting, negative for suppression)
+    """
+    token_score_dict: Dict[int, float] = {}
+
+    # Common alias mappings for device labels
+    device_aliases = {
+        "ET_tube": ["endotracheal tube", "et tube", "ett"],
+        "NG_tube": ["nasogastric tube", "ng tube", "ng"],
+        "OG_tube": ["orogastric tube", "og tube", "og"],
+        "Feeding_tube": ["feeding tube", "enteric feeding tube"],
+        "Enteric_tube": ["enteric tube"],
+        "CVC": ["central venous catheter", "cvc"],
+        "Central_line": ["central line", "central venous line"],
+        "PICC_line": ["picc", "picc line", "peripherally inserted central catheter"],
+        "Chest_tube": ["chest tube", "thoracostomy tube"],
+        "Pigtail_catheter": ["pigtail catheter", "pigtail"],
+        "Pacemaker": ["pacemaker"],
+        "ICD": ["icd", "implantable cardioverter defibrillator", "defibrillator"],
+        "Tracheostomy_tube": ["tracheostomy tube", "tracheostomy", "trach"],
+        "No_devices": ["no devices", "no tubes", "no lines"]
+    }
+
+    for label, score in label_score_dict.items():
+        # Positive enhancement or negative suppression
+        base_score = score if score >= threshold else -score
+
+        # Get all aliases for this label
+        variants = device_aliases.get(label, [])
+        # Also process original label (remove underscores)
+        variants.append(label.replace("_", " "))
+        variants.append(label.replace("_", " ").lower())
+
+        for text_label in variants:
+            if add_leading_space:
+                text_label = " " + text_label
+
+            tokens = tokenizer.tokenize(text_label)
+            token_ids = tokenizer.convert_tokens_to_ids(tokens)
+            if not token_ids:
+                continue
+
+            prev_was_space = True
+            score_i = base_score
+            for i, (tok, tid) in enumerate(zip(tokens, token_ids)):
+                include = (tok.startswith("Ġ") or tok.startswith("▁") or prev_was_space) if only_first_token else True
+
+                if include:
+                    if tid not in token_score_dict or abs(score_i) > abs(token_score_dict[tid]):
+                        token_score_dict[tid] = float(score_i)
+
+                # Update to next token's decayed score
+                score_i *= decay_gamma
+                prev_was_space = tok in {"Ġ", "▁"}
+
+    return token_score_dict
+
 def clinical_guide_generation(label_score_dict, threshold=0.5):
     """
     Generate an English clinical guidance text from label scores.
@@ -243,6 +473,31 @@ def clinical_guide_generation(label_score_dict, threshold=0.5):
 
     return clinical_text + " " + view_text
 
+def device_guide_generation(label_score_dict, threshold=0.5):
+    """
+    Generate an English device guidance text from device label scores.
+
+    Args:
+        label_score_dict: dict, device labels mapped to scores
+        threshold: float, threshold for determining device presence
+
+    Returns:
+        str: Device guidance text
+    """
+    detected_devices = []
+
+    for label, score in label_score_dict.items():
+        if score >= threshold and label != "No_devices":
+            # Convert label to more readable format
+            device_name = label.replace("_", " ").lower()
+            detected_devices.append(device_name)
+
+    if not detected_devices:
+        return "No support devices detected."
+
+    device_text = "Attention to the following support devices: " + "; ".join(detected_devices) + "."
+    return device_text
+
 def ccd(label_score_dict,  model, tokenizer, image_tensors, 
         input_ids, guidance_ids,
         keywords, temperature, top_k, top_p, length_penalty, no_repeat_ngram_size,
@@ -252,11 +507,18 @@ def ccd(label_score_dict,  model, tokenizer, image_tensors,
         do_sample=False,
         mode="logit"):
 
-    token_score_dict = get_expert_model_token_score_dict(
-        label_score_dict=label_score_dict,
-        tokenizer=tokenizer,
-    )
-    
+    # Select appropriate token scoring function based on detection mode
+    if all(label in get_device_label2prompts().keys() for label in label_score_dict.keys()):
+        token_score_dict = get_device_token_score_dict(
+            label_score_dict=label_score_dict,
+            tokenizer=tokenizer,
+        )
+    else:
+        token_score_dict = get_expert_model_token_score_dict(
+            label_score_dict=label_score_dict,
+            tokenizer=tokenizer,
+        )
+        
     generated_ids = input_ids.clone()
     dist_generated_ids = guidance_ids.clone()
 

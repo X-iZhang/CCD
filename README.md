@@ -23,6 +23,7 @@
 </div>
 
 ## 🔥 News
+- **[02 Dec 2025]** 🧲 Added [**zero-shot device detection**](#supported-expert-models) (13 types) via MedSigLIP.
 - **[17 Oct 2025]** 🔩 **CCD** has been upgraded to support **view classification** for chest X-rays — see the [Supported Expert Models](#supported-expert-models) section for details.
 - **[06 Oct 2025]** 🎮 The **online demo** is available at [Hugging Face Spaces](https://huggingface.co/spaces/X-iZhang/CCD). Feel free to try it out!
 - **[30 Sep 2025]** 🗂️ The processed test data for quick start are now available — enjoy exploring with [the provided guidelines](https://github.com/X-iZhang/CCD/tree/main?tab=readme-ov-file#%EF%B8%8F-dataset)!
@@ -131,7 +132,7 @@ python -m ccd.run_ccd \
 | `--alpha` | Clinical guidance weight (range: 0.0–1.0) | 0.5 |
 | `--beta` | Expert token weight (range: 0.0–1.0) | 0.5 |
 | `--gamma` | Token bias magnitude (range: 2, 5, 10) | 10 |
-| `--expert-model` | Choice of expert model: `"DenseNet"` or `"MedSiglip"` | DenseNet |
+| `--expert-model` | Choice of expert model: `"DenseNet"`, `"MedSiglip"`, `"View"`, or `"Device"` | DenseNet |
 
 ### Script Inference
 You can run inference programmatically using the `ccd_eval` function from `ccd/run_ccd.py`.  
@@ -152,7 +153,7 @@ output = ccd_eval(
     temperature=0.9,  # Sampling temperature
     top_p=0.9,        # Nucleus sampling probability
     top_k=50,         # Top-k sampling
-    expert_model="DenseNet",    # or "MedSiglip"
+    expert_model="DenseNet",    # or "MedSiglip" or "View" or "Device"
     max_new_tokens=256
 )
 print(output)
@@ -215,7 +216,7 @@ CCD is compatible with any radiology MLLM that follows the **Libra/LLaVA** archi
 
 ### Supported Expert Models
 
-CCD integrates two expert models for **clinical signal extraction**:  
+CCD integrates four expert models' signals for **clinical signal extraction**:  
 
 > [!NOTE]  
 > To switch expert models, simply set the `--expert-model` argument (CLI) or `expert_model` parameter (Python) to one of the following names.  
@@ -225,6 +226,7 @@ CCD integrates two expert models for **clinical signal extraction**:
 | **DenseNet** | [torchxrayvision/densenet121-res224-chex](https://huggingface.co/torchxrayvision/densenet121-res224-chex) | CheXpert (Stanford)|
 | **MedSiglip** | [google/medsiglip-448](https://huggingface.co/google/medsiglip-448) |  Variant of [SigLIP](https://arxiv.org/abs/2303.15343) |
 | **View Model** | [ChestViewSplit](https://github.com/xinario/chestViewSplit) |  'Frontal' or 'Lateral' |
+| **Device Model** | [google/medsiglip-448](https://huggingface.co/google/medsiglip-448)  |  Zero-shot detection of 13 device types or 'No Device'. |
 
 > [!TIP]  
 > When deploying *DenseNet*, it has been upgraded to support the *view classification expert model*, which helps the system better understand the view position of chest X-rays, thereby improving the accuracy of report generation. *MedSigLIP* has also been configured accordingly. The design is inspired by the [MAIRA-2 chat template](https://huggingface.co/microsoft/maira-2/blob/main/processing_maira2.py#L191).

@@ -31,7 +31,10 @@ from libra.eval import libra_eval_batch
 from .ccd_utils import (
     predict_medsiglip_labels,
     predict_chexpert_labels,
+    predict_view_labels,
+    predict_device_labels,
     clinical_guide_generation,
+    device_guide_generation,
     ccd
 )
 
@@ -207,10 +210,21 @@ def ccd_eval(
             label_score_dict = predict_medsiglip_labels(img)
         elif expert_model.lower() == "densenet":
             label_score_dict = predict_chexpert_labels(img)
+        elif expert_model.lower() == "view":
+            label_score_dict = predict_view_labels(img)
+        elif expert_model.lower() == "device":
+            label_score_dict = predict_device_labels(img)
         else:
             raise ValueError(f"❌ Unknown expert model: {expert_model}")
-
-        clinical_guide = clinical_guide_generation(label_score_dict)
+        
+        # ===== 2.1 Generate clinical guidance =====
+        if expert_model.lower() == "device":
+            clinical_guide = device_guide_generation(label_score_dict)
+        else:
+            clinical_guide = clinical_guide_generation(label_score_dict)
+        
+        # print(f"\n[Debug]⚠️ Predicted labels and scores from {expert_model}:\n{label_score_dict}\n")
+        # print(f"\n[Debug]⚠️ Clinical guidance:\n{clinical_guide}\n")  
         
         # ===== 3. Build perturbed prompt (clinical_guides) =====
         if clinical_guide is not None:
@@ -278,6 +292,7 @@ if __name__ == "__main__":
     parser.add_argument("--alpha", type=float, default=0.5, help="Alpha for CCD, [0,1]")
     parser.add_argument("--beta", type=float, default=0.5, help="Beta for CCD, [0,1]")
     parser.add_argument("--gamma", type=float, default=10, help="Gamma for CCD, {2,5,10}")
+    parser.add_argument("--expert-model", type=str, default="DenseNet", help="Expert model for label prediction (DenseNet, MedSigLIP, View, or Device)")
     args = parser.parse_args()
 
     answer = ccd_eval(**vars(args))
