@@ -23,7 +23,7 @@
 </div>
 
 ## 🔥 News
-- **[02 Dec 2025]** 🧲 Added [**zero-shot device detection**](#supported-expert-models) (13 types) via MedSigLIP.
+- **[02 Dec 2025]** 🧲 Added [**zero-shot device detection**](#supported-expert-models) (13 types) powered by [MedSigLIP](https://huggingface.co/google/medsiglip-448).
 - **[17 Oct 2025]** 🔩 **CCD** has been upgraded to support **view classification** for chest X-rays — see the [Supported Expert Models](#supported-expert-models) section for details.
 - **[06 Oct 2025]** 🎮 The **online demo** is available at [Hugging Face Spaces](https://huggingface.co/spaces/X-iZhang/CCD). Feel free to try it out!
 - **[30 Sep 2025]** 🗂️ The processed test data for quick start are now available — enjoy exploring with [the provided guidelines](https://github.com/X-iZhang/CCD/tree/main?tab=readme-ov-file#%EF%B8%8F-dataset)!
