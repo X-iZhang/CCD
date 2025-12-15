@@ -235,7 +235,7 @@ def main():
                     gr.Markdown("### CCD Parameters")
                     expert_model = gr.Radio(
                         label="Expert Model",
-                        choices=["MedSigLip", "DenseNet"],
+                        choices=["MedSigLip", "DenseNet", "View", "Device"],
                         value="DenseNet"
                     )
 
@@ -249,7 +249,7 @@ def main():
                     medsiglip_notice = gr.Markdown(value="", visible=False)
 
                     def _toggle_medsiglip_notice(choice):
-                        if choice == "MedSigLip":
+                        if choice == "MedSigLip" or choice == "Device":
                             return gr.update(visible=True, value=medsiglip_message)
                         else:
                             return gr.update(visible=False, value="")
