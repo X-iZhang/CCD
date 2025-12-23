@@ -175,6 +175,8 @@ output = run_eval(
 )
 print(output)
 ```
+> [!TIP]
+> This is also supported batch inference using a list of images and questions.
 
 </details>
 
