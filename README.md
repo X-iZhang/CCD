@@ -282,14 +282,11 @@ pip install RadEval
 If you find our paper and code useful in your research and applications, please cite using this BibTeX:
 
 ```bibtex
-@misc{zhang2025ccdmitigatinghallucinationsradiology,
-      title={CCD: Mitigating Hallucinations in Radiology MLLMs via Clinical Contrastive Decoding}, 
-      author={Xi Zhang and Zaiqiao Meng and Jake Lever and Edmond S. L. Ho},
-      year={2025},
-      eprint={2509.23379},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2509.23379}, 
+@article{zhang2025ccd,
+  title={CCD: Mitigating Hallucinations in Radiology MLLMs via Clinical Contrastive Decoding},
+  author={Zhang, Xi and Meng, Zaiqiao and Lever, Jake and Ho, Edmond SL},
+  journal={arXiv preprint arXiv:2509.23379},
+  year={2025}
 }
 ```
 
