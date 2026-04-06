@@ -23,7 +23,7 @@
 </div>
 
 ## 🔥 News
-- **[6 Apr 2026]** 🎉 [***The paper***](https://arxiv.org/abs/2509.23379) has been accepted to [**ACL 2026**](https://2026.aclweb.org/)!
+- **[06 Apr 2026]** 🎉 [***The paper***](https://arxiv.org/abs/2509.23379) has been accepted to [**ACL 2026**](https://2026.aclweb.org/)!
 - **[02 Dec 2025]** 🧲 Added [**zero-shot device detection**](#supported-expert-models) (13 types) powered by [MedSigLIP](https://huggingface.co/google/medsiglip-448).
 - **[17 Oct 2025]** 🔩 **CCD** has been upgraded to support **view classification** for chest X-rays — see the [Supported Expert Models](#supported-expert-models) section for details.
 - **[06 Oct 2025]** 🎮 The **online demo** is available at [Hugging Face Spaces](https://huggingface.co/spaces/X-iZhang/CCD). Feel free to try it out!
